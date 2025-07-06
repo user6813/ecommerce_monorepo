@@ -9,6 +9,8 @@ import { RolePermissionModule } from './authentication/role-permission/role-perm
 import { PermissionModule } from './authentication/permission/permission.module';
 import { RoleModule } from './authentication/role/role.module';
 import { UserModule } from './user/user.module';
+import { RedisConfigModule } from './redis/redis.module';
+import { CommonModule } from './common/common.module';
 
 
 @Module({
@@ -29,6 +31,8 @@ import { UserModule } from './user/user.module';
         entities: [__dirname + '/inventory/**/*.model.{ts,js}'],
       }),
     }),
+    RedisConfigModule,
+    CommonModule,
     InventoryModule,
     OrderModule,
     UserModule,
