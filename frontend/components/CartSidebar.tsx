@@ -26,7 +26,7 @@ export default function CartSidebar() {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">Shopping Cart ({totalItems})</h2>
+            <h2 className="text-lg font-semibold text-[#000]">Shopping Cart ({totalItems})</h2>
             <button
               onClick={() => dispatch(closeCart())}
               className="text-gray-500 hover:text-gray-700"
@@ -56,11 +56,11 @@ export default function CartSidebar() {
                       className="w-16 h-16 object-cover rounded"
                     />
                     <div className="flex-1">
-                      <h3 className="font-medium text-sm line-clamp-2">{item.title}</h3>
+                      <h3 className="font-medium text-sm line-clamp-2 text-[#000]">{item.title}</h3>
                       <p className="text-green-600 font-semibold">${item.price.toFixed(2)}</p>
                     </div>
                     <div className="flex flex-col items-end space-y-2">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2 text-[#000]">
                         <button
                           onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))}
                           className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300"
@@ -70,14 +70,14 @@ export default function CartSidebar() {
                         <span className="w-8 text-center">{item.quantity}</span>
                         <button
                           onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))}
-                          className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300"
+                          className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 text-[#000]"
                         >
                           +
                         </button>
                       </div>
                       <button
                         onClick={() => dispatch(removeFromCart(item.id))}
-                        className="text-red-500 hover:text-red-700 text-sm"
+                        className="text-red-500 hover:text-red-700 text-sm text-[#000]"
                       >
                         Remove
                       </button>

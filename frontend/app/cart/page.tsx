@@ -34,7 +34,7 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Shopping Cart ({totalItems} items)</h1>
+      <h1 className="text-3xl font-bold mb-8 text-[#000]">Shopping Cart ({totalItems} items)</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
@@ -49,11 +49,11 @@ export default function CartPage() {
                     className="w-20 h-20 object-cover rounded"
                   />
                   <div className="flex-1">
-                    <h3 className="font-medium text-lg">{item.title}</h3>
+                    <h3 className="font-medium text-lg text-[#000]">{item.title}</h3>
                     <p className="text-gray-600 text-sm">{item.category}</p>
                     <p className="text-green-600 font-semibold text-lg">${item.price.toFixed(2)}</p>
                   </div>
-                  <div className="flex flex-col items-end space-y-2">
+                  <div className="flex flex-col items-end space-y-2 text-[#000]">
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))}
@@ -96,7 +96,7 @@ export default function CartPage() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
+          <div className="bg-white rounded-lg shadow-md p-6 sticky top-4 text-[#000]">
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             
             <div className="space-y-3 mb-6">
