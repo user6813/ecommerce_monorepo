@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { Category } from '../../services/api';
+
 interface CategoriesState {
-  categories: string[];
+  categories: Category[];
   loading: boolean;
   error: string | null;
 }
@@ -16,7 +18,7 @@ const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
-    setCategories: (state, action: PayloadAction<string[]>) => {
+    setCategories: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload;
       state.loading = false;
       state.error = null;

@@ -13,6 +13,9 @@ export class ProductModel {
   @Column({ type: 'decimal', nullable: false })
   price: number;
 
+  @Column({ nullable: true })
+  image: string;
+
   @Column({ type: 'int', default: 0 })
   stock: number;
 

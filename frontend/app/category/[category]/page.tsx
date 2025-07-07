@@ -10,20 +10,19 @@ export default function CategoryPage() {
   const products = useSelector((state: RootState) => state.products.products);
   const categories = useSelector((state: RootState) => state.categories.categories);
   
-  // Find the category name from the slug
-  const categoryName = categories.find(cat => 
-    cat.toLowerCase().replace(/\s+/g, '-') === category
-  );
+  // Find the category from the ID
+  const categoryId = parseInt(category as string, 10);
+  const categoryData = categories.find(cat => cat.id === categoryId);
   
-  // Filter products by category
+  // Filter products by category ID
   const categoryProducts = products.filter(product => 
-    product.category.toLowerCase() === categoryName?.toLowerCase()
+    product.categoryId === categoryId
   );
 
   return (
     <div className="container mx-auto px-4 py-8 text-[#000]">
       <h1 className="text-3xl font-bold mb-8">
-        {categoryName ? `${categoryName} Products` : 'Category Not Found'}
+        {categoryData ? `${categoryData.name} Products` : 'Category Not Found'}
       </h1>
       
       {categoryProducts.length === 0 ? (

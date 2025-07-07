@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../../data/products';
+import { Product } from '../../services/api';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -25,17 +25,17 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(item => item.id === action.payload.id);
       if (existingItem) {
         existingItem.quantity += 1;
-        state.notification = `${action.payload.title} quantity updated`;
+        state.notification = `${action.payload.name} quantity updated`;
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
-        state.notification = `${action.payload.title} added to cart`;
+        state.notification = `${action.payload.name} added to cart`;
       }
     },
     removeFromCart: (state, action: PayloadAction<number>) => {
       const item = state.items.find(item => item.id === action.payload);
       state.items = state.items.filter(item => item.id !== action.payload);
       if (item) {
-        state.notification = `${item.title} removed from cart`;
+        state.notification = `${item.name} removed from cart`;
       }
     },
     updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
@@ -43,10 +43,10 @@ const cartSlice = createSlice({
       if (item) {
         if (action.payload.quantity <= 0) {
           state.items = state.items.filter(item => item.id !== action.payload.id);
-          state.notification = `${item.title} removed from cart`;
+          state.notification = `${item.name} removed from cart`;
         } else {
           item.quantity = action.payload.quantity;
-          state.notification = `${item.title} quantity updated`;
+          state.notification = `${item.name} quantity updated`;
         }
       }
     },

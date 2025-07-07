@@ -4,6 +4,7 @@ export interface Category {
   id: number;
   name: string;
   description?: string;
+  image?: string;
 }
 
 export class CreateCategoryDto {
@@ -22,6 +23,13 @@ export class CreateCategoryDto {
     maxLength: 500,
   })
   description?: string;
+
+  @ApiProperty({
+    description: 'Optional image URL for the category',
+    example: 'https://example.com/category-image.jpg',
+    required: false,
+  })
+  image?: string;
 }
 
 export class UpdateCategoryDto {
@@ -41,6 +49,13 @@ export class UpdateCategoryDto {
     maxLength: 500,
   })
   description?: string;
+
+  @ApiProperty({
+    description: 'Optional image URL for the category',
+    example: 'https://example.com/category-image.jpg',
+    required: false,
+  })
+  image?: string;
 }
 
 export class CategoryResponseDto {
@@ -62,4 +77,11 @@ export class CategoryResponseDto {
     required: false,
   })
   description?: string;
+
+  @ApiProperty({
+    description: 'Optional image URL for the category',
+    example: 'https://example.com/category-image.jpg',
+    required: false,
+  })
+  image?: string;
 } 

@@ -1,12 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { setProducts } from '../store/features/productsSlice';
 import { setCategories } from '../store/features/categoriesSlice';
-import { products } from '../data/products';
-import { categories } from '../data/categories';
+import { productApi, categoryApi, Product, Category } from '../services/api';
 import ProductCard from '../components/ProductCard';
 
 export default function Home() {
@@ -15,9 +14,21 @@ export default function Home() {
   const categoriesState = useSelector((state: RootState) => state.categories);
 
   useEffect(() => {
-    // Initialize store with data
-    dispatch(setProducts(products));
-    dispatch(setCategories(categories));
+    const fetchData = async () => {
+      try {
+        const [productsResponse, categoriesResponse] = await Promise.all([
+          productApi.getAll(),
+          categoryApi.getAll(),
+        ]);
+        
+        dispatch(setProducts(productsResponse.data));
+        dispatch(setCategories(categoriesResponse.data));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [dispatch]);
 
   if (productsState.loading || categoriesState.loading) {

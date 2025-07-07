@@ -45,13 +45,13 @@ export default function CartPage() {
                 <div key={item.id} className="flex items-center space-x-4 p-4 border rounded-lg">
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.name}
                     className="w-20 h-20 object-cover rounded"
                   />
                   <div className="flex-1">
-                    <h3 className="font-medium text-lg text-[#000]">{item.title}</h3>
-                    <p className="text-gray-600 text-sm">{item.category}</p>
-                    <p className="text-green-600 font-semibold text-lg">${item.price.toFixed(2)}</p>
+                                          <h3 className="font-medium text-lg text-[#000]">{item.name}</h3>
+                      <p className="text-gray-600 text-sm">Category ID: {item.categoryId}</p>
+                    <p className="text-green-600 font-semibold text-lg">${Number(item.price).toFixed(2)}</p>
                   </div>
                   <div className="flex flex-col items-end space-y-2 text-[#000]">
                     <div className="flex items-center space-x-2">
@@ -70,7 +70,7 @@ export default function CartPage() {
                       </button>
                     </div>
                     <p className="text-sm text-gray-600">
-                      Total: ${(item.price * item.quantity).toFixed(2)}
+                      Total: ${(Number(item.price) * item.quantity).toFixed(2)}
                     </p>
                     <button
                       onClick={() => dispatch(removeFromCart(item.id))}
@@ -102,7 +102,7 @@ export default function CartPage() {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
                 <span>Subtotal ({totalItems} items)</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>${Number(totalPrice).toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
@@ -110,12 +110,12 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between">
                 <span>Tax</span>
-                <span>${(totalPrice * 0.08).toFixed(2)}</span>
+                <span>${(Number(totalPrice) * 0.08).toFixed(2)}</span>
               </div>
               <div className="border-t pt-3">
                 <div className="flex justify-between font-semibold text-lg">
                   <span>Total</span>
-                  <span>${(totalPrice * 1.08).toFixed(2)}</span>
+                  <span>${(Number(totalPrice) * 1.08).toFixed(2)}</span>
                 </div>
               </div>
             </div>

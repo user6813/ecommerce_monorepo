@@ -4,6 +4,7 @@ export interface Product {
   id: number;
   name: string;
   price: number;
+  image: string;
   stock: number;
   categoryId: number;
 }
@@ -23,6 +24,13 @@ export class CreateProductDto {
     minimum: 0,
   })
   price: number;
+
+  @ApiProperty({
+    description: 'The image URL of the product',
+    example: 'https://example.com/product-image.jpg',
+    required: false,
+  })
+  image: string;
 
   @ApiProperty({
     description: 'The ID of the category this product belongs to',
@@ -58,6 +66,13 @@ export class UpdateProductDto {
   price?: number;
 
   @ApiProperty({
+    description: 'The image URL of the product',
+    example: 'https://example.com/product-image.jpg',
+    required: false,
+  })
+  image?: string;
+
+  @ApiProperty({
     description: 'The ID of the category this product belongs to',
     example: 1,
     required: false,
@@ -91,6 +106,12 @@ export class ProductResponseDto {
     example: 999.99,
   })
   price: number;
+
+  @ApiProperty({
+    description: 'The image URL of the product',
+    example: 'https://example.com/product-image.jpg',
+  })
+  image: string;
 
   @ApiProperty({
     description: 'The current stock quantity of the product',

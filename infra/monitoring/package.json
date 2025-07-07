@@ -1,0 +1,16 @@
+{
+  "name": "monitoring",
+  "version": "1.0.0",
+  "description": "Standalone monitoring utilities for the ecommerce backend",
+  "main": "standalone-monitoring.ts",
+  "dependencies": {
+    "prom-client": "^15.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc standalone-monitoring.ts --outDir dist --target es2020 --module commonjs",
+    "clean": "rm -rf dist"
+  }
+} 

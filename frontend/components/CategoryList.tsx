@@ -20,11 +20,11 @@ export default function CategoryList() {
         
         {categories.map((category) => (
           <Link
-            key={category}
-            href={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+            key={category.id}
+            href={`/category/${category.id}`}
             className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-200"
           >
-            {category}
+            {category.name}
           </Link>
         ))}
       </div>

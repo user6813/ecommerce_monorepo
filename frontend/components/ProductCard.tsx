@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { Product } from '../data/products';
+import { Product } from '../services/api';
 import { addToCart } from '../store/features/cartSlice';
 
 interface ProductCardProps {
@@ -18,14 +18,14 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="relative h-48 overflow-hidden">
         <img
           src={product.image}
-          alt={product.title}
+          alt={product.name}
           className="w-full h-full object-cover"
         />
       </div>
       
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
-          {product.title}
+          {product.name}
         </h3>
         
         {product.description && (
@@ -36,11 +36,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         <div className="flex justify-between items-center">
           <span className="text-xl font-bold text-green-600">
-            ${product.price.toFixed(2)}
+            ${Number(product.price).toFixed(2)}
           </span>
           
           <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
-            {product.category}
+            Category ID: {product.categoryId}
           </span>
         </div>
         

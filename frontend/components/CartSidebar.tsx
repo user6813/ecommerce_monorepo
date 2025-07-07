@@ -52,12 +52,12 @@ export default function CartSidebar() {
                   <div key={item.id} className="flex items-center space-x-4 p-3 border rounded-lg">
                     <img
                       src={item.image}
-                      alt={item.title}
+                      alt={item.name}
                       className="w-16 h-16 object-cover rounded"
                     />
                     <div className="flex-1">
-                      <h3 className="font-medium text-sm line-clamp-2 text-[#000]">{item.title}</h3>
-                      <p className="text-green-600 font-semibold">${item.price.toFixed(2)}</p>
+                      <h3 className="font-medium text-sm line-clamp-2 text-[#000]">{item.name}</h3>
+                      <p className="text-green-600 font-semibold">${Number(item.price).toFixed(2)}</p>
                     </div>
                     <div className="flex flex-col items-end space-y-2">
                       <div className="flex items-center space-x-2 text-[#000]">
@@ -93,7 +93,7 @@ export default function CartSidebar() {
             <div className="border-t p-4">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-lg font-semibold">Total:</span>
-                <span className="text-xl font-bold text-green-600">${totalPrice.toFixed(2)}</span>
+                <span className="text-xl font-bold text-green-600">${Number(totalPrice).toFixed(2)}</span>
               </div>
               <button className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 transition-colors duration-200">
                 Checkout

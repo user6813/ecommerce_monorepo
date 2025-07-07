@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # NestJS Backend
+  - job_name: 'nestjs-backend'
+    static_configs:
+      - targets: ['localhost:3000']  # For Linux
+        # - targets: ['host.docker.internal:3000']  # For Docker Desktop
+    metrics_path: '/monitoring/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+
+  # Node.js metrics (if using node-exporter)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['host.docker.internal:9100']  # For Docker Desktop
+        # - targets: ['localhost:9100']  # For Linux
+    scrape_interval: 15s 

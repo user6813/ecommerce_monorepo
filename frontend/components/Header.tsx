@@ -16,20 +16,11 @@ export default function Header() {
             <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
               Home
             </Link>
-            <Link href="/category/electronics" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-              Electronics
-            </Link>
-            <Link href="/category/clothing" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-              Clothing
-            </Link>
-            <Link href="/category/home-garden" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-              Home & Garden
-            </Link>
-            <Link href="/category/sports" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-              Sports
-            </Link>
             <Link href="/cart" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
               Cart
+            </Link>
+            <Link href="/admin" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+              Admin
             </Link>
           </nav>
           
